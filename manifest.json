@@ -1,7 +1,7 @@
 {
-    "name": "Android Authority PWA",
-    "short_name": "AndroidAuth",
-    "description": "Acesso rápido ao Android Authority",
+    "name": "Android Authority",
+    "short_name": "Android Authority",
+    "description": "Acesso rápido ao Android Authority.",
     "start_url": "/androidauthority/index.html",
     "display": "standalone",
     "background_color": "#FFFFFF",
