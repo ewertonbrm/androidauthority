@@ -1,31 +1,24 @@
 const CACHE_NAME = 'android-authority-pwa-cache-v1';
-// CAMINHOS AJUSTADOS
 const urlsToCache = [
     '/androidauthority/',
     '/androidauthority/index.html',
     '/androidauthority/manifest.json',
     '/androidauthority/icons/icon-192x192.png',
-    '/androidauthority/icons/icon-512x512.png'
-    // Adicione o caminho do seu GIF aqui se estiver local
-    // '/androidauthority/caminho/do/seu/gif.gif' 
+    '/androidauthority/icons/icon-512x512.png',
+    '/androidauthority/icons/loading.gif' // <-- GIF de carregamento adicionado aqui
 ];
 
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Service Worker: Arquivos em cache durante a instalação');
+        console.log('Service Worker: Arquivos críticos cacheados.');
         return cache.addAll(urlsToCache);
       })
   );
 });
 
 self.addEventListener('fetch', event => {
-  // Ignora requisições para o site externo (https://androidauthority.com)
-  if (!event.request.url.includes(self.location.origin)) {
-      return;
-  }
-  
   event.respondWith(
     caches.match(event.request)
       .then(response => {
